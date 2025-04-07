@@ -21,10 +21,20 @@ $app->put('/alunni/{id}', "AlunniController:update");
 //curl -X DELETE http://localhost:8080/alunni/1
 $app->delete('/alunni/{id}', "AlunniController:delete");
 
+//curl -X GET http://localhost:8080/alunni/1/certificazioni
+$app->get('/alunni/{id}/certificazioni', "AlunniController:certificazioni");
+
+//curl -X POST http://localhost:8080/alunni/1/certificazioni -H "Content-Type: application/json" -d '{"Titolo": "Certificazione Informatica", "Votazione": 78, "Ente": "Meucci"}'
+$app->post('/alunni/{id}/certificazioni', "AlunniController:certificazioneCreate");
+
+//curl -X GET http://localhost:8080/alunni/1/certificazioni/1
+$app->get('/alunni/{id}/certificazioni/{certificazioneId}', "AlunniController:certificazioneShow");
+
+//curl -X PUT http://localhost:8080/alunni/1/certificazioni/1 -H "Content-Type: application/json" -d '{"Titolo": "Certificazione Italiano", "Votazione": 78, "Ente": "Meucci"}'
+$app->put('/alunni/{id}/certificazioni/{certificazioneId}', "AlunniController:certificazioneUpdate");
+
+//curl -X DELETE http://localhost:8080/alunni/1/certificazioni/1
+$app->delete('/alunni/{id}/certificazioni/{certificazioneId}', "AlunniController:certificazioneDelete");
+
 
 $app->run();
-
-
-
-
-?>
