@@ -16,8 +16,6 @@ class AlunniController
   }
 
 
-
-
   public function show(Request $request, Response $response, $args){
     $mysqli_connection = new MySQLi('my_mariadb', 'root', 'ciccio', 'scuola');
     $result = $mysqli_connection->query("SELECT nome, cognome FROM alunni WHERE id =".$args['id']);
@@ -26,7 +24,6 @@ class AlunniController
     $response->getBody()->write(json_encode($result));
     return $response->withHeader("Content-type", "application/json")->withStatus(200);
   }
-
 
 
   public function create(Request $request, Response $response, $args) {
@@ -46,8 +43,6 @@ class AlunniController
   }
 
 
-
-
   public function update(Request $request, Response $response, $args){
     $mysqli_connection = new MySQLi('my_mariadb', 'root', 'ciccio', 'scuola');
     $body = json_decode($request->getBody(), true);
@@ -65,8 +60,6 @@ class AlunniController
   }
 
 
-
-  
   public function delete(Request $request, Response $response, $args){
     $mysqli_connection = new MySQLi('my_mariadb', 'root', 'ciccio', 'scuola');
     $result = $mysqli_connection->query("DELETE FROM alunni WHERE id =".$args['id']);
@@ -81,7 +74,5 @@ class AlunniController
   }
 
 
-  
 }
-
 
